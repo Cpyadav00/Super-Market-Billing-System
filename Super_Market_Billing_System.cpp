@@ -200,7 +200,7 @@ gotoxy(64,5);
 cout<<"NET AMOUNT";
 fin.open("itemstore.dat",ios::binary);
 if(!fin)
-{cout<<"nnFile Not Found...";
+{cout<<"\n\n\tFile Not Found...";
 goto menu;}
 fin.seekg(0);
 gtotal=0;
@@ -212,7 +212,7 @@ gtotal+=amt.retnetamt();
 ff=0;}
 if(ff!=0) gtotal=0;
 }gotoxy(17,k);
-cout<<"nnntttGrand Total="<<gtotal;
+cout<<"\n\n\n\t\t\tGrand Total="<<gtotal;
 getch();
 fin.close();
 }
@@ -226,28 +226,28 @@ gotoxy(25,2);
 cout<<"Bill Editor";
 gotoxy(25,3);
 cout<<"=================nn";
-cout<<"ntt1.Add Item Detailsnn";
-cout<<"tt2.Edit Item Detailsnn";
-cout<<"tt3.Delete Item Detailsnn";
-cout<<"tt4.Back to Main Menu ";
+cout<<"\n\n\t1.Add Item Details";
+cout<<"\n\n\t2.Edit Item Details";
+cout<<"\n\n\t3.Delete Item Details";
+cout<<"\n\n\t4.Back to Main Menu ";
 int apc;
 cin>>apc;
 switch(apc)
 {
 case 1:fout.open("itemstore.dat",ios::binary|ios::app);
 amt.add();
-cout<<"nttItem Added Successfully!";
+cout<<"\n\n\tItem Added Successfully!";
 getch();
 goto db;
 case 2:
 int ino;
 flag=0;
-cout<<"nntEnter Item Number to be Edited :";
+cout<<"\n\n\tEnter Item Number to be Edited :";
 cin>>ino;
 fin.open("itemstore.dat",ios::binary);
 fout.open("itemstore.dat",ios::binary|ios::app);
 if(!fin)
-{cout<<"nnFile Not Found...";
+{cout<<"\n\n\tFile Not Found...";
 goto menu;
 }
 fin.seekg(0);
@@ -260,16 +260,16 @@ if(x==ino)
 {flag=1;
 fout.seekp(r*sizeof(amt));
 system("cls");
-cout<<"nttCurrent Details aren";
+cout<<"\n\n\tCurrent Details aren";
 amt.show();
-cout<<"nnttEnter New Detailsn";
+cout<<"\n\n\tEnter New Detailsn";
 amt.add();
-cout<<"nttItem Details editted";
+cout<<"\n\n\tItem Details editted";
 }
 }r++;
 }
 if(flag==0)
-{cout<<"nttItem No does not exist...Please Retry!";
+{cout<<"\n\n\tItem No does not exist...Please Retry!";
 getch();
 goto db;
 }
@@ -277,11 +277,11 @@ fin.close();
 getch();
 goto db;
 case 3:flag=0;
-cout<<"nntEnter Item Number to be deleted :";
+cout<<"\n\n\tEnter Item Number to be deleted :";
 cin>>ino;
 fin.open("itemstore.dat",ios::binary);
 if(!fin)
-{cout<<"nnFile Not Found...";
+{cout<<"\n\n\tFile Not Found...";
 goto menu;
 }
 //fstream tmp("temp.dat",ios::binary|ios::out);
@@ -299,7 +299,7 @@ fout.open("itemstore.dat",ios::trunc|ios::binary);
 fout.seekp(0);
 tmp.open("temp.dat",ios::binary|ios::in);
 if(!tmp)
-{cout<<"Error in File";
+{cout<<"\n\n\tError in File";
 goto db;
 }
 while(tmp.read((char*)&amt,sizeof(amt)))
@@ -307,25 +307,25 @@ fout.write((char*)&amt,sizeof(amt));
 tmp.close();
 fout.close();
 if(flag==1)
-cout<<"nttItem Succesfully Deleted";
+cout<<"\n\n\tItem Succesfully Deleted";
 else if (flag==0)
-cout<<"nttItem does not Exist! Please Retry";
+cout<<"\n\n\tItem does not Exist! Please Retry";
 getch();
 goto db;
 case 4:
 goto menu;
-default: cout<<"nnttWrong Choice!!! Retry";
+default: cout<<"\n\n\t\tWrong Choice!!! Retry";
 getch();
 goto db;
 }
 case 3:system("cls");
 flag=0;
 int ino;
-cout<<"nnttEnter Item Number :";
+cout<<"\n\n\t\tEnter Item Number :";
 cin>>ino;
 fin.open("itemstore.dat",ios::binary);
 if(!fin)
-{cout<<"nnFile Not Found...nProgram Terminated!";
+{cout<<"\n\n\tFile Not Found...nProgram Terminated!";
 goto menu;
 }
 fin.seekg(0);
@@ -338,13 +338,13 @@ break;
 }
 }
 if(flag==0)
-cout<<"nttItem does not exist....Please Retry!";
+cout<<"\n\n\tItem does not exist....Please Retry!";
 getch();
 fin.close();
 goto menu;
 case 4:system("cls");
 gotoxy(20,20);
-cout<<"ARE YOU SURE, YOU WANT TO EXIT (Y/N)?";
+cout<<"\n\n\tARE YOU SURE, YOU WANT TO EXIT (Y/N)?";
 char yn;
 cin>>yn;
 if((yn=='Y')||(yn=='y'))
@@ -357,7 +357,7 @@ exit(0);
 else if((yn=='N')||(yn=='n'))
 goto menu;
 else{goto menu;}
-default:cout<<"nnttWrong Choice....Please Retry!";
+default:cout<<"\n\n\t\tWrong Choice....Please Retry!";
 getch();
 goto menu;
 }
